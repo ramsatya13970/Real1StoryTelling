@@ -1,0 +1,140 @@
+.why-section {
+  background: var(--black);
+  padding: 7rem 2rem;
+  overflow: hidden;
+}
+
+.why-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.why-header {
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--transition), transform 0.7s var(--transition);
+}
+
+.why-header--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.why-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.why-label-num {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--yellow);
+  opacity: 0.5;
+}
+
+.why-label-text {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  font-weight: 500;
+}
+
+.why-heading {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.why-subtext {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.4);
+  max-width: 500px;
+}
+
+.why-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.why-pillar {
+  background: var(--yellow);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s var(--transition), transform 0.6s var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.why-pillar::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.06);
+}
+
+.why-pillar--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.why-pillar:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(255, 214, 0, 0.25);
+  transition: transform 0.3s var(--transition-spring), box-shadow 0.3s ease;
+}
+
+.pillar-icon-wrap {
+  margin-bottom: 2rem;
+  color: var(--black);
+  opacity: 0.7;
+}
+
+.pillar-content {
+  position: relative;
+}
+
+.pillar-num {
+  display: block;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: rgba(0,0,0,0.4);
+  margin-bottom: 0.75rem;
+}
+
+.pillar-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.2rem;
+  color: var(--black);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.pillar-body {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(0,0,0,0.65);
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .why-pillars {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+}

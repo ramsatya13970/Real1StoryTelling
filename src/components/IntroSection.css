@@ -1,0 +1,124 @@
+.intro-section {
+  padding: 6rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
+}
+
+.intro-section--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.intro-label-num {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--yellow-dark);
+  opacity: 0.5;
+}
+
+.intro-label-text {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.intro-card {
+  background: var(--black);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+}
+
+.intro-card-inner {
+  position: relative;
+  padding: 3rem 3.5rem;
+  overflow: hidden;
+}
+
+.intro-card-bg-accent {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,214,0,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.intro-body-text {
+  font-family: 'Archivo', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+.intro-highlight {
+  font-style: italic;
+  color: var(--yellow);
+  font-weight: 400;
+}
+
+.intro-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--yellow);
+  color: var(--black);
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s var(--transition-spring), box-shadow 0.25s ease, background 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-download-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.2);
+  transform: translateX(-110%) skewX(-20deg);
+  transition: transform 0.4s ease;
+}
+
+.intro-download-btn:hover::before {
+  transform: translateX(110%) skewX(-20deg);
+}
+
+.intro-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 214, 0, 0.4);
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .intro-card-inner {
+    padding: 2rem 1.5rem;
+  }
+}
