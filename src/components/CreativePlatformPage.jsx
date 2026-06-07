@@ -10,7 +10,10 @@ import './CreativePlatformPage.css';
 export const CreativePlatformPage = ({
   videoSrc = null,
   pdfDownloadUrl = '#',
-  activationImages = {}
+  activationImages = {},
+  visualImages = [],
+  copyTiles = [],
+  dosDontsPairs = []
 }) => {
   return (
     <div className="cp-page">
@@ -24,7 +27,11 @@ export const CreativePlatformPage = ({
 
       {/* 3. Guidelines */}
       <div className="cp-bg-off-white">
-        <GuidelinesSection />
+        <GuidelinesSection
+          visualImages={visualImages}
+          copyTiles={copyTiles}
+          dosDontsPairs={dosDontsPairs}
+        />
       </div>
 
       {/* 4. Why Platform */}

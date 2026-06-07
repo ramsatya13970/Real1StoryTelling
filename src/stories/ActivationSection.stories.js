@@ -30,13 +30,15 @@ export const WithImages = {
   args: {
     images: {
       0: [
-        'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80',
+        // 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80',
+        'https://brandportal.ingkacentres.com/asset/3ed3d8aa-d044-42de-a8d5-b042ec4446a2/web_optimized_1280_landscape/Shop_Keyvisual3_rgb.jpg',
         'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&q=80',
         'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80',
         'https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=400&q=80',
       ],
       1: [
-        'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&q=80',
+        // 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&q=80',
+        'https://brandportal.ingkacentres.com/asset/3ed3d8aa-d044-42de-a8d5-b042ec4446a2/web_optimized_1280_landscape/Shop_Keyvisual3_rgb.jpg',
         'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=400&q=80',
         'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=400&q=80',
         'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&q=80',

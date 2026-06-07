@@ -77,12 +77,19 @@ const DarkHeader = ({ num, title, onBack }) => (
 /* ═══════════════════════════════════════════════════════════════════
    SHARED: ANIMATED IMAGE PLACEHOLDER
    ═══════════════════════════════════════════════════════════════════ */
-const ImgPh = ({ gradient, visible, delay = 0, className = '', children }) => (
+const makeBackgroundStyle = (source) => {
+  if (!source) return {};
+  return source.startsWith('http')
+    ? { backgroundImage: `url(${source})`, backgroundSize: 'cover', backgroundPosition: 'center' }
+    : { background: source };
+};
+
+const ImgPh = ({ gradient, style = {}, visible, delay = 0, className = '', children }) => (
   <div
     className={`img-ph ${visible ? 'img-ph--in' : ''} ${className}`}
     style={{ '--d': `${delay}s` }}
   >
-    <div className="img-ph-fill"  style={{ background: gradient }} />
+    <div className="img-ph-fill" style={{ ...makeBackgroundStyle(gradient), ...style }} />
     <div className="img-ph-sweep" />
     <div className="img-ph-grain" />
     {children}
@@ -93,18 +100,19 @@ const ImgPh = ({ gradient, visible, delay = 0, className = '', children }) => (
    VISUAL GUIDELINES DETAIL
    Layout: left text + circle diagram | right 1-tall + 3-small grid
    ═══════════════════════════════════════════════════════════════════ */
-const VisualDetail = ({ onBack }) => {
+const VisualDetail = ({ onBack, visualImages = [] }) => {
   const [on,   setOn]   = useState(false);
   const [imgs, setImgs] = useState([]);
   const [diag, setDiag] = useState(false);
+  const visuals = visualImages.length === 4 ? visualImages : VG_IMAGES;
 
   useEffect(() => {
     const t0 = setTimeout(() => setOn(true), 10);
     const t1 = setTimeout(() => setDiag(true), 700);
-    const ti = VG_IMAGES.map((_, i) =>
+    const ti = visuals.map((_, i) =>
       setTimeout(() => setImgs(p => [...p, i]), 350 + i * 130));
     return () => { [t0, t1, ...ti].forEach(clearTimeout); };
-  }, []);
+  }, [visuals]);
 
   return (
     <div className={`gd-overlay ${on ? 'gd-overlay--in' : ''}`}>
@@ -152,18 +160,18 @@ const VisualDetail = ({ onBack }) => {
         ── */}
         <div className="vg-grid">
           {/* Tall portrait image */}
-          <ImgPh gradient={VG_IMAGES[0]} visible={imgs.includes(0)} delay={0}
+          <ImgPh gradient={visuals[0]} visible={imgs.includes(0)} delay={0}
             className="vg-img vg-img--tall" />
 
           {/* Top-right wide image */}
-          <ImgPh gradient={VG_IMAGES[1]} visible={imgs.includes(1)} delay={0.12}
+          <ImgPh gradient={visuals[1]} visible={imgs.includes(1)} delay={0.12}
             className="vg-img vg-img--wide" />
 
           {/* Bottom-right: two images side by side */}
           <div className="vg-img-row">
-            <ImgPh gradient={VG_IMAGES[2]} visible={imgs.includes(2)} delay={0.22}
+            <ImgPh gradient={visuals[2]} visible={imgs.includes(2)} delay={0.22}
               className="vg-img" />
-            <ImgPh gradient={VG_IMAGES[3]} visible={imgs.includes(3)} delay={0.32}
+            <ImgPh gradient={visuals[3]} visible={imgs.includes(3)} delay={0.32}
               className="vg-img" />
           </div>
         </div>
@@ -177,16 +185,17 @@ const VisualDetail = ({ onBack }) => {
    COPY GUIDELINES DETAIL
    Layout: left text | right 2-col × 3-row grid with headline overlays
    ═══════════════════════════════════════════════════════════════════ */
-const CopyDetail = ({ onBack }) => {
+const CopyDetail = ({ onBack, copyTiles = [] }) => {
   const [on,    setOn]    = useState(false);
   const [tiles, setTiles] = useState([]);
+  const tilesToUse = copyTiles.length === 6 ? copyTiles : COPY_TILES;
 
   useEffect(() => {
     const t0 = setTimeout(() => setOn(true), 10);
-    const ti = COPY_TILES.map((_, i) =>
+    const ti = tilesToUse.map((_, i) =>
       setTimeout(() => setTiles(p => [...p, i]), 350 + i * 100));
     return () => { [t0, ...ti].forEach(clearTimeout); };
-  }, []);
+  }, [tilesToUse]);
 
   return (
     <div className={`gd-overlay ${on ? 'gd-overlay--in' : ''}`}>
@@ -216,8 +225,8 @@ const CopyDetail = ({ onBack }) => {
 
         {/* ── RIGHT: 2 × 3 tile grid ── */}
         <div className="cg-grid">
-          {COPY_TILES.map((tile, i) => (
-            <ImgPh key={i} gradient={tile.g} visible={tiles.includes(i)}
+          {tilesToUse.map((tile, i) => (
+            <ImgPh key={i} gradient={tile.g} style={makeBackgroundStyle(tile.src || tile.g)} visible={tiles.includes(i)}
               delay={tile.r * 0.08 + tile.c * 0.05} className="cg-tile">
               {/* dark gradient overlay + headline text */}
               <div className="cg-tile-veil" />
@@ -234,9 +243,9 @@ const CopyDetail = ({ onBack }) => {
 /* ═══════════════════════════════════════════════════════════════════
    DO'S & DON'TS DETAIL
    ═══════════════════════════════════════════════════════════════════ */
-const PlaceholderImg = ({ gradient, visible, delay = 0, isDo }) => (
+const PlaceholderImg = ({ gradient, src, visible, delay = 0, isDo }) => (
   <div className={`dd-img-box ${visible ? 'dd-img-box--visible' : ''}`} style={{ '--delay': `${delay}s` }}>
-    <div className="dd-img-fill" style={{ background: gradient }} />
+    <div className="dd-img-fill" style={src ? makeBackgroundStyle(src) : { background: gradient }} />
     <div className="dd-img-sweep" />
     <div className="dd-img-grain" />
     <div className={`dd-img-tag ${isDo ? 'dd-img-tag--do' : 'dd-img-tag--dont'}`}>{isDo ? '✓' : '✕'}</div>
@@ -244,16 +253,17 @@ const PlaceholderImg = ({ gradient, visible, delay = 0, isDo }) => (
   </div>
 );
 
-const DosDontsDetail = ({ onBack }) => {
+const DosDontsDetail = ({ onBack, dosDontsPairs = [] }) => {
   const [on,   setOn]   = useState(false);
   const [rows, setRows] = useState([]);
+  const pairs = dosDontsPairs.length === 4 ? dosDontsPairs : DOS_DONTS_PAIRS;
 
   useEffect(() => {
     const t0 = setTimeout(() => setOn(true), 10);
-    const ti = DOS_DONTS_PAIRS.map((_, i) =>
+    const ti = pairs.map((_, i) =>
       setTimeout(() => setRows(p => [...p, i]), 320 + i * 190));
     return () => { [t0, ...ti].forEach(clearTimeout); };
-  }, []);
+  }, [pairs]);
 
   return (
     <div className={`gd-overlay ${on ? 'gd-overlay--in' : ''}`}>
@@ -264,22 +274,34 @@ const DosDontsDetail = ({ onBack }) => {
           <div className="dd-col-label"><span className="dd-col-badge dd-col-badge--do">Do's</span></div>
           <div className="dd-col-label"><span className="dd-col-badge dd-col-badge--dont">Don'ts</span></div>
         </div>
-        {DOS_DONTS_PAIRS.map((pair, i) => {
+        {pairs.map((pair, i) => {
           const rv = rows.includes(i);
           return (
             <div key={i} className="dd-pair-wrapper">
               <div className={`dd-row ${rv ? 'dd-row--visible' : ''}`}>
                 <div className="dd-cell dd-cell--do">
                   <p className="dd-item-text"><span className="dd-item-num">{i + 1}.</span>{' '}{pair.do.text}</p>
-                  <PlaceholderImg gradient={pair.do.gradient} visible={rv} delay={0.06 + i * 0.04} isDo={true} />
+                  <PlaceholderImg
+                    gradient={pair.do.gradient}
+                    src={pair.do.src}
+                    visible={rv}
+                    delay={0.06 + i * 0.04}
+                    isDo={true}
+                  />
                 </div>
                 <div className="dd-v-divider" />
                 <div className="dd-cell dd-cell--dont">
                   <p className="dd-item-text"><span className="dd-item-num">{i + 1}.</span>{' '}{pair.dont.text}</p>
-                  <PlaceholderImg gradient={pair.dont.gradient} visible={rv} delay={0.18 + i * 0.04} isDo={false} />
+                  <PlaceholderImg
+                    gradient={pair.dont.gradient}
+                    src={pair.dont.src}
+                    visible={rv}
+                    delay={0.18 + i * 0.04}
+                    isDo={false}
+                  />
                 </div>
               </div>
-              {i < DOS_DONTS_PAIRS.length - 1 && (
+              {i < pairs.length - 1 && (
                 <div className={`dd-h-sep ${rv ? 'dd-h-sep--visible' : ''}`} />
               )}
             </div>
@@ -333,9 +355,13 @@ const GuidelineCard = ({ g, index, activeIndex, isRevealed, onClick }) => {
 /* ═══════════════════════════════════════════════════════════════════
    MAIN SECTION
    ═══════════════════════════════════════════════════════════════════ */
-export const GuidelinesSection = () => {
+export const GuidelinesSection = ({ visualImages = [], copyTiles = [], dosDontsPairs = [] }) => {
   const wrapperRef = useRef(null);
   const rafRef     = useRef(null);
+
+  const visualImagesToUse = visualImages.length === 4 ? visualImages : VG_IMAGES;
+  const copyTilesToUse    = copyTiles.length === 6 ? copyTiles : COPY_TILES;
+  const dosDontsPairsToUse = dosDontsPairs.length === 4 ? dosDontsPairs : DOS_DONTS_PAIRS;
 
   const [activeGuideline, setActiveGuideline] = useState(null);
   const [activeIndex,     setActiveIndex]     = useState(0);
@@ -372,9 +398,9 @@ export const GuidelinesSection = () => {
   if (activeGuideline !== null) {
     const g = GUIDELINES[activeGuideline];
     const close = () => setActiveGuideline(null);
-    if (g.id === 'visual')    return <VisualDetail   onBack={close} />;
-    if (g.id === 'copy')      return <CopyDetail     onBack={close} />;
-    if (g.id === 'dos-donts') return <DosDontsDetail onBack={close} />;
+    if (g.id === 'visual')    return <VisualDetail   onBack={close} visualImages={visualImagesToUse} />;
+    if (g.id === 'copy')      return <CopyDetail     onBack={close} copyTiles={copyTilesToUse} />;
+    if (g.id === 'dos-donts') return <DosDontsDetail onBack={close} dosDontsPairs={dosDontsPairsToUse} />;
   }
 
   return (
