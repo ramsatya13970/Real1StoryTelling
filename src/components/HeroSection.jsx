@@ -53,9 +53,10 @@ export const HeroSection = ({ videoSrc = null }) => {
             <span className="hero-eyebrow-line" />
           </div>
           <h1 className="hero-headline">
-            <span className="hero-headline-line line-1">Moments you</span>
-            <span className="hero-headline-line line-2">can't get with</span>
-            <span className="hero-headline-accent line-3">a click</span>
+            <span className="hero-headline-line line-1">
+              <span className="hero-headline-accent">Moment❜s</span> you can❜t
+            </span>
+            <span className="hero-headline-line line-2">get with a click</span>
           </h1>
           <p className="hero-subline">Creative Platform</p>
           <div className="hero-scroll-indicator">
