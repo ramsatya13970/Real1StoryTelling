@@ -59,7 +59,8 @@ export const NoMedia = {
 export const WithSampleMedia = {
   name: 'Full Page (Sample Media)',
   args: {
-    videoSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    // videoSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    videoSrc: 'https://brandportal.ingkacentres.com/asset/664b82b7-265f-454a-ab59-5694f18212cb/mp4/Shop_HeroVideo_20s_16x9_Clean.mp4',
     pdfDownloadUrl: '#',
     activationImages: {
       0: [
