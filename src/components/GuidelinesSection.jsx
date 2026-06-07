@@ -6,89 +6,233 @@ import './GuidelinesSection.css';
    ═══════════════════════════════════════════════════════════════════ */
 
 const DOS_DONTS_PAIRS = [
-  {
-    do:   { text: 'We focus on real moments of togetherness',            gradient: 'linear-gradient(135deg,#3a2a1a 0%,#6b4423 60%,#8b5e2e 100%)' },
-    dont: { text: "We don't speak negatively about online shopping",     gradient: 'linear-gradient(135deg,#1a2a2a 0%,#234040 60%,#2e5555 100%)' },
-  },
-  {
-    do:   { text: 'We show emotional, genuine and relatable moments',    gradient: 'linear-gradient(135deg,#2a1a10 0%,#7a4a20 60%,#9a6030 100%)' },
-    dont: { text: "We don't create staged or cliché scenes",             gradient: 'linear-gradient(135deg,#1a2210 0%,#304a18 60%,#3d6020 100%)' },
-  },
-  {
-    do:   { text: 'We dramatise moments that naturally lead to product', gradient: 'linear-gradient(135deg,#2a200a 0%,#7a6010 60%,#a07c18 100%)' },
-    dont: { text: "We don't lead with products, offers or transactions", gradient: 'linear-gradient(135deg,#1a1a2a 0%,#202050 60%,#282870 100%)' },
-  },
-  {
-    do:   { text: 'We are for the many',                                 gradient: 'linear-gradient(135deg,#2a1a0a 0%,#6a3c10 60%,#8a5018 100%)' },
-    dont: { text: 'We are not for the few',                              gradient: 'linear-gradient(135deg,#1a1a1a 0%,#303030 60%,#404040 100%)' },
-  },
+  { do: { text: 'We focus on real moments of togetherness',            gradient: 'linear-gradient(135deg,#3a2a1a 0%,#6b4423 60%,#8b5e2e 100%)' }, dont: { text: "We don't speak negatively about online shopping",  gradient: 'linear-gradient(135deg,#1a2a2a 0%,#234040 60%,#2e5555 100%)' } },
+  { do: { text: 'We show emotional, genuine and relatable moments',    gradient: 'linear-gradient(135deg,#2a1a10 0%,#7a4a20 60%,#9a6030 100%)' }, dont: { text: "We don't create staged or cliché scenes",           gradient: 'linear-gradient(135deg,#1a2210 0%,#304a18 60%,#3d6020 100%)' } },
+  { do: { text: 'We dramatise moments that naturally lead to product', gradient: 'linear-gradient(135deg,#2a200a 0%,#7a6010 60%,#a07c18 100%)' }, dont: { text: "We don't lead with products, offers or transactions", gradient: 'linear-gradient(135deg,#1a1a2a 0%,#202050 60%,#282870 100%)' } },
+  { do: { text: 'We are for the many',                                 gradient: 'linear-gradient(135deg,#2a1a0a 0%,#6a3c10 60%,#8a5018 100%)' }, dont: { text: 'We are not for the few',                           gradient: 'linear-gradient(135deg,#1a1a1a 0%,#303030 60%,#404040 100%)' } },
+];
+
+// Visual guideline placeholder images — warm earth/nature tones
+const VG_IMAGES = [
+  'linear-gradient(145deg,#2a1e14 0%,#5c3d28 50%,#7a5235 100%)',  // tall — warm brown (mother+child)
+  'linear-gradient(145deg,#1a2e20 0%,#2e5038 50%,#3d6645 100%)',  // top-right — green (friends group)
+  'linear-gradient(145deg,#2a2010 0%,#5a4520 50%,#7a6030 100%)',  // mid-right — golden (shop scene)
+  'linear-gradient(145deg,#1e1a2a 0%,#3a2a4a 50%,#4a3a5a 100%)', // bottom-right — evening (cafe)
+];
+
+// Copy guideline placeholder tiles — 6 tiles, 2 columns, 3 rows
+const COPY_TILES = [
+  { g: 'linear-gradient(145deg,#2a1814 0%,#5a3828 100%)', h: "A moment that's all about her",    r: 0, c: 0 },
+  { g: 'linear-gradient(145deg,#1a2820 0%,#2e4838 100%)', h: "Moments you can't click and collect", r: 0, c: 1 },
+  { g: 'linear-gradient(145deg,#281814 0%,#583828 100%)', h: 'Bring your best beauty advisor',   r: 1, c: 0 },
+  { g: 'linear-gradient(145deg,#181e28 0%,#283848 100%)', h: 'Some moments taste better together', r: 1, c: 1 },
+  { g: 'linear-gradient(145deg,#241418 0%,#4a2830 100%)', h: 'Be in the moment',                 r: 2, c: 0 },
+  { g: 'linear-gradient(145deg,#182418 0%,#284428 100%)', h: 'On the menu: quality time',        r: 2, c: 1 },
 ];
 
 const GUIDELINES = [
-  {
-    id: 'visual',
-    num: '01',
-    category: 'Visual Guidelines',
-    subtitle: 'Art & Photography',
-    description: 'See the visual expression as a natural extension of real life: warm, inviting and a little more refined.',
-    accent: '#FFD600',
-    bg: '#1E1C1C',
-    details: {
-      intro: 'Our visual language is rooted in real moments — human, warm, and never staged.',
-      sections: [
-        { title: 'Generative Canvas', num: '01 / ART',   body: "See the visual expression as a natural extension of real life: warm, inviting and a little more refined. Keep people at the centre and show real moments in a way that feels natural, not staged. Focus on connection, small emotions and everyday behaviours." },
-        { title: 'Stills & Motion',   num: '02 / PHOTO', body: "Photography should feel candid and alive. Capture the energy of real people in real spaces — browsing, connecting, discovering. Use natural light, genuine expressions, and environments that breathe." },
-      ],
-    },
-  },
-  {
-    id: 'copy',
-    num: '02',
-    category: 'Copy Guidelines',
-    subtitle: 'Voice & Tone',
-    description: "We know it's not always easy to translate English headlines. Instead of translating word for word, focus on the feeling.",
-    accent: '#FFD600',
-    bg: '#2D4A4A',
-    details: {
-      intro: 'Our copy is human first. We speak to people like a trusted friend.',
-      sections: [
-        { title: 'Headlines',  num: '01 / VOICE', body: "Emotionally capture the meaning. Highlight the moment, and make it feel natural in your language. Don't be afraid to be playful — we want to feel alive, not corporate." },
-        { title: 'Body Copy',  num: '02 / TONE',  body: "Keep it conversational and clear. Short sentences. Real emotions. No jargon. Write as if you're talking to a friend curious about what's happening at the centre today." },
-      ],
-    },
-  },
-  {
-    id: 'dos-donts',
-    num: '03',
-    category: "Do's and Don'ts",
-    subtitle: 'Best Practices',
-    description: "Clear rules that keep our communication authentic and consistent across every touchpoint.",
-    accent: '#FFD600',
-    bg: '#1A1A1A',
-  },
+  { id: 'visual',    num: '01', category: 'Visual Guidelines', subtitle: 'Art & Photography', description: 'See the visual expression as a natural extension of real life: warm, inviting and a little more refined.', accent: '#FFD600', bg: '#1E1C1C' },
+  { id: 'copy',      num: '02', category: 'Copy Guidelines',   subtitle: 'Voice & Tone',       description: "We know it's not always easy to translate English headlines. Instead of translating word for word, focus on the feeling.", accent: '#FFD600', bg: '#2D4A4A' },
+  { id: 'dos-donts', num: '03', category: "Do's and Don'ts",   subtitle: 'Best Practices',     description: "Clear rules that keep our communication authentic and consistent across every touchpoint.", accent: '#FFD600', bg: '#1A1A1A' },
 ];
 
 /* ═══════════════════════════════════════════════════════════════════
-   PARTICLES
+   SHARED: PARTICLES
    ═══════════════════════════════════════════════════════════════════ */
 const Particles = () => (
-  <div className="dd-particles" aria-hidden="true">
-    {Array.from({ length: 18 }).map((_, i) => (
-      <div key={i} className="dd-particle" style={{
+  <div className="gd-particles" aria-hidden="true">
+    {Array.from({ length: 20 }).map((_, i) => (
+      <div key={i} className="gd-particle" style={{
         left: `${5 + (i * 37 + i * i * 13) % 90}%`,
         top:  `${10 + (i * 53 + i * 7) % 80}%`,
         animationDelay:    `${(i * 0.47) % 5}s`,
         animationDuration: `${5 + (i * 0.8) % 6}s`,
         width:  `${2 + (i * 3) % 5}px`,
         height: `${2 + (i * 3) % 5}px`,
-        opacity: 0.08 + (i % 4) * 0.05,
+        opacity: 0.07 + (i % 4) * 0.04,
       }} />
     ))}
   </div>
 );
 
 /* ═══════════════════════════════════════════════════════════════════
-   PLACEHOLDER IMAGE TILE
+   SHARED: DARK STICKY HEADER
+   ═══════════════════════════════════════════════════════════════════ */
+const DarkHeader = ({ num, title, onBack }) => (
+  <div className="gd-header">
+    <button className="gd-back-btn" onClick={onBack}>
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+        <path d="M12 4L6 10l6 6" stroke="currentColor" strokeWidth="2"
+          strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+      Back
+    </button>
+    <div className="gd-header-meta">
+      <span className="gd-header-num">{num}</span>
+      <h2 className="gd-header-title">{title}</h2>
+    </div>
+  </div>
+);
+
+/* ═══════════════════════════════════════════════════════════════════
+   SHARED: ANIMATED IMAGE PLACEHOLDER
+   ═══════════════════════════════════════════════════════════════════ */
+const ImgPh = ({ gradient, visible, delay = 0, className = '', children }) => (
+  <div
+    className={`img-ph ${visible ? 'img-ph--in' : ''} ${className}`}
+    style={{ '--d': `${delay}s` }}
+  >
+    <div className="img-ph-fill"  style={{ background: gradient }} />
+    <div className="img-ph-sweep" />
+    <div className="img-ph-grain" />
+    {children}
+  </div>
+);
+
+/* ═══════════════════════════════════════════════════════════════════
+   VISUAL GUIDELINES DETAIL
+   Layout: left text + circle diagram | right 1-tall + 3-small grid
+   ═══════════════════════════════════════════════════════════════════ */
+const VisualDetail = ({ onBack }) => {
+  const [on,   setOn]   = useState(false);
+  const [imgs, setImgs] = useState([]);
+  const [diag, setDiag] = useState(false);
+
+  useEffect(() => {
+    const t0 = setTimeout(() => setOn(true), 10);
+    const t1 = setTimeout(() => setDiag(true), 700);
+    const ti = VG_IMAGES.map((_, i) =>
+      setTimeout(() => setImgs(p => [...p, i]), 350 + i * 130));
+    return () => { [t0, t1, ...ti].forEach(clearTimeout); };
+  }, []);
+
+  return (
+    <div className={`gd-overlay ${on ? 'gd-overlay--in' : ''}`}>
+      <Particles />
+      <DarkHeader num="01" title="Visual Guidelines" onBack={onBack} />
+
+      <div className="vg-wrap">
+
+        {/* ── LEFT COLUMN ── */}
+        <div className={`vg-left ${on ? 'vg-left--in' : ''}`}>
+
+          <h1 className="vg-h1">Visual guidelines</h1>
+
+          <p className="vg-p">
+            See the visual expression as a natural extension of real life: warm, inviting
+            and a little more refined. Keep people at the centre and show real moments in
+            a way that feels natural and unforced, like something you've simply noticed.
+          </p>
+          <p className="vg-p">
+            Focus on connection, small emotions and everyday behaviours. Choose
+            authenticity over perfection, and avoid anything that feels staged, overly
+            polished or too perfect.
+          </p>
+
+          {/* Circle diagram */}
+          <div className={`vg-diagram ${diag ? 'vg-diagram--in' : ''}`}>
+            <div className="vg-circ vg-circ--sm">
+              <span>Meeting<br/>place</span>
+            </div>
+            <div className="vg-plus">+</div>
+            <div className="vg-circ vg-circ--lg">
+              <span>Moment</span>
+            </div>
+            <div className="vg-plus">+</div>
+            <div className="vg-circ vg-circ--sm">
+              <span>Togetherness</span>
+            </div>
+          </div>
+        </div>
+
+        {/* ── RIGHT: image grid matching screenshot exactly ──
+              Col 0: tall image (spans 2 rows)
+              Col 1 row 0: one small image
+              Col 1 row 1: two small side-by-side
+        ── */}
+        <div className="vg-grid">
+          {/* Tall portrait image */}
+          <ImgPh gradient={VG_IMAGES[0]} visible={imgs.includes(0)} delay={0}
+            className="vg-img vg-img--tall" />
+
+          {/* Top-right wide image */}
+          <ImgPh gradient={VG_IMAGES[1]} visible={imgs.includes(1)} delay={0.12}
+            className="vg-img vg-img--wide" />
+
+          {/* Bottom-right: two images side by side */}
+          <div className="vg-img-row">
+            <ImgPh gradient={VG_IMAGES[2]} visible={imgs.includes(2)} delay={0.22}
+              className="vg-img" />
+            <ImgPh gradient={VG_IMAGES[3]} visible={imgs.includes(3)} delay={0.32}
+              className="vg-img" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+/* ═══════════════════════════════════════════════════════════════════
+   COPY GUIDELINES DETAIL
+   Layout: left text | right 2-col × 3-row grid with headline overlays
+   ═══════════════════════════════════════════════════════════════════ */
+const CopyDetail = ({ onBack }) => {
+  const [on,    setOn]    = useState(false);
+  const [tiles, setTiles] = useState([]);
+
+  useEffect(() => {
+    const t0 = setTimeout(() => setOn(true), 10);
+    const ti = COPY_TILES.map((_, i) =>
+      setTimeout(() => setTiles(p => [...p, i]), 350 + i * 100));
+    return () => { [t0, ...ti].forEach(clearTimeout); };
+  }, []);
+
+  return (
+    <div className={`gd-overlay ${on ? 'gd-overlay--in' : ''}`}>
+      <Particles />
+      <DarkHeader num="02" title="Copy Guidelines" onBack={onBack} />
+
+      <div className="cg-wrap">
+
+        {/* ── LEFT COLUMN ── */}
+        <div className={`cg-left ${on ? 'cg-left--in' : ''}`}>
+          <h1 className="cg-h1">Copy guidelines</h1>
+
+          <p className="cg-p">
+            We know it's not always easy to translate English headlines. Instead of
+            translating word for word, focus on the feeling.
+          </p>
+          <p className="cg-p">
+            Transcreate, capture the meaning, highlight the moment, and make it feel
+            natural in your language.
+          </p>
+          <p className="cg-p">
+            When writing your own copy from scratch, make sure to follow Ingka Centres'
+            tone of voice. Use simple language everyone understands, don't repeat what's
+            already shown, focus on the moment, and let emotion lead.
+          </p>
+        </div>
+
+        {/* ── RIGHT: 2 × 3 tile grid ── */}
+        <div className="cg-grid">
+          {COPY_TILES.map((tile, i) => (
+            <ImgPh key={i} gradient={tile.g} visible={tiles.includes(i)}
+              delay={tile.r * 0.08 + tile.c * 0.05} className="cg-tile">
+              {/* dark gradient overlay + headline text */}
+              <div className="cg-tile-veil" />
+              <span className="cg-tile-h">{tile.h}</span>
+            </ImgPh>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+/* ═══════════════════════════════════════════════════════════════════
+   DO'S & DON'TS DETAIL
    ═══════════════════════════════════════════════════════════════════ */
 const PlaceholderImg = ({ gradient, visible, delay = 0, isDo }) => (
   <div className={`dd-img-box ${visible ? 'dd-img-box--visible' : ''}`} style={{ '--delay': `${delay}s` }}>
@@ -100,58 +244,43 @@ const PlaceholderImg = ({ gradient, visible, delay = 0, isDo }) => (
   </div>
 );
 
-/* ═══════════════════════════════════════════════════════════════════
-   DO'S & DON'TS DETAIL
-   ═══════════════════════════════════════════════════════════════════ */
 const DosDontsDetail = ({ onBack }) => {
-  const [visible, setVisible] = useState(false);
-  const [rowsVisible, setRowsVisible] = useState([]);
+  const [on,   setOn]   = useState(false);
+  const [rows, setRows] = useState([]);
 
   useEffect(() => {
-    const t0 = setTimeout(() => setVisible(true), 10);
-    const timers = DOS_DONTS_PAIRS.map((_, i) =>
-      setTimeout(() => setRowsVisible(prev => [...prev, i]), 320 + i * 190)
-    );
-    return () => { clearTimeout(t0); timers.forEach(clearTimeout); };
+    const t0 = setTimeout(() => setOn(true), 10);
+    const ti = DOS_DONTS_PAIRS.map((_, i) =>
+      setTimeout(() => setRows(p => [...p, i]), 320 + i * 190));
+    return () => { [t0, ...ti].forEach(clearTimeout); };
   }, []);
 
   return (
-    <div className={`detail-overlay dd-dark-overlay ${visible ? 'detail-overlay--visible' : ''}`}>
+    <div className={`gd-overlay ${on ? 'gd-overlay--in' : ''}`}>
       <Particles />
-      <div className="detail-header dd-dark-header">
-        <button className="detail-back-btn dd-dark-back" onClick={onBack}>
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <path d="M12 4L6 10l6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          Back
-        </button>
-        <div className="detail-header-meta">
-          <span className="dd-dark-num">03</span>
-          <h2 className="dd-dark-title">Do's and Don'ts</h2>
-        </div>
-      </div>
+      <DarkHeader num="03" title="Do's and Don'ts" onBack={onBack} />
       <div className="dd-page">
         <div className="dd-col-headers">
           <div className="dd-col-label"><span className="dd-col-badge dd-col-badge--do">Do's</span></div>
           <div className="dd-col-label"><span className="dd-col-badge dd-col-badge--dont">Don'ts</span></div>
         </div>
         {DOS_DONTS_PAIRS.map((pair, i) => {
-          const rowVisible = rowsVisible.includes(i);
+          const rv = rows.includes(i);
           return (
             <div key={i} className="dd-pair-wrapper">
-              <div className={`dd-row ${rowVisible ? 'dd-row--visible' : ''}`}>
+              <div className={`dd-row ${rv ? 'dd-row--visible' : ''}`}>
                 <div className="dd-cell dd-cell--do">
                   <p className="dd-item-text"><span className="dd-item-num">{i + 1}.</span>{' '}{pair.do.text}</p>
-                  <PlaceholderImg gradient={pair.do.gradient} visible={rowVisible} delay={0.06 + i * 0.04} isDo={true} />
+                  <PlaceholderImg gradient={pair.do.gradient} visible={rv} delay={0.06 + i * 0.04} isDo={true} />
                 </div>
                 <div className="dd-v-divider" />
                 <div className="dd-cell dd-cell--dont">
                   <p className="dd-item-text"><span className="dd-item-num">{i + 1}.</span>{' '}{pair.dont.text}</p>
-                  <PlaceholderImg gradient={pair.dont.gradient} visible={rowVisible} delay={0.18 + i * 0.04} isDo={false} />
+                  <PlaceholderImg gradient={pair.dont.gradient} visible={rv} delay={0.18 + i * 0.04} isDo={false} />
                 </div>
               </div>
               {i < DOS_DONTS_PAIRS.length - 1 && (
-                <div className={`dd-h-sep ${rowVisible ? 'dd-h-sep--visible' : ''}`} />
+                <div className={`dd-h-sep ${rv ? 'dd-h-sep--visible' : ''}`} />
               )}
             </div>
           );
@@ -162,88 +291,31 @@ const DosDontsDetail = ({ onBack }) => {
 };
 
 /* ═══════════════════════════════════════════════════════════════════
-   GENERIC DETAIL VIEW
-   ═══════════════════════════════════════════════════════════════════ */
-const GenericDetail = ({ guideline, onBack }) => {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => { setTimeout(() => setVisible(true), 10); }, []);
-  return (
-    <div className={`detail-overlay ${visible ? 'detail-overlay--visible' : ''}`}>
-      <div className="detail-header" style={{ borderBottom: `3px solid ${guideline.accent}` }}>
-        <button className="detail-back-btn" onClick={onBack}>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M12 4L6 10l6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          Back
-        </button>
-        <div className="detail-header-meta">
-          <span className="detail-num">{guideline.num}</span>
-          <h2 className="detail-title">{guideline.category}</h2>
-        </div>
-      </div>
-      <div className="detail-body">
-        <p className="detail-intro">{guideline.details.intro}</p>
-        <div className="detail-sections">
-          {guideline.details.sections.map((sec, i) => (
-            <div key={i} className="detail-section" style={{ animationDelay: `${0.1 + i * 0.15}s` }}>
-              <div className="detail-section-header">
-                <span className="detail-section-num">{sec.num}</span>
-                <h3 className="detail-section-title">{sec.title}</h3>
-              </div>
-              <p className="detail-section-body">{sec.body}</p>
-              <div className="detail-image-grid">
-                {[0, 1].map(n => (
-                  <div key={n} className="detail-placeholder-img"
-                    style={{ background: `linear-gradient(135deg, ${guideline.bg} 0%, #333 100%)` }}>
-                    <div className="placeholder-shimmer" />
-                    <span className="placeholder-label">Image {n + 1}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-/* ═══════════════════════════════════════════════════════════════════
-   SINGLE CARD
+   CARD
    ═══════════════════════════════════════════════════════════════════ */
 const GuidelineCard = ({ g, index, activeIndex, isRevealed, onClick }) => {
-  const isActive  = index === activeIndex;
-  const isPast    = index < activeIndex;
-  const isFuture  = index > activeIndex;
-
+  const isActive = index === activeIndex;
+  const isPast   = index < activeIndex;
+  const isFuture = index > activeIndex;
   return (
     <button
-      className={`
-        guideline-card
-        ${isRevealed  ? 'guideline-card--revealed' : ''}
-        ${isActive    ? 'guideline-card--active'   : ''}
-        ${isPast      ? 'guideline-card--past'     : ''}
-        ${isFuture    ? 'guideline-card--future'   : ''}
-      `.trim().replace(/\s+/g, ' ')}
+      className={['guideline-card', isRevealed ? 'guideline-card--revealed' : '', isActive ? 'guideline-card--active' : '', isPast ? 'guideline-card--past' : '', isFuture ? 'guideline-card--future' : ''].filter(Boolean).join(' ')}
       onClick={onClick}
     >
       <div className="card-inner" style={{ background: g.bg }}>
         <div className="card-bg-shimmer" />
         <div className="card-corner-accent" style={{ background: g.accent }} />
         <div className="card-progress-dot" style={{ background: g.accent }} />
-
         <div className="card-num-row">
           <span className="card-num">{g.num}</span>
           <span className="card-num-slash">/</span>
           <span className="card-num-label">{g.subtitle.toUpperCase()}</span>
         </div>
-
         <div className="card-body">
           <span className="card-category-tag" style={{ color: g.accent }}>{g.subtitle}</span>
           <h3 className="card-title">{g.category}</h3>
           <p className="card-desc">{g.description}</p>
         </div>
-
         <div className="card-footer">
           <span className="card-cta">Explore</span>
           <span className="card-arrow" style={{ background: g.accent }}>
@@ -252,7 +324,6 @@ const GuidelineCard = ({ g, index, activeIndex, isRevealed, onClick }) => {
             </svg>
           </span>
         </div>
-
         <div className="card-glow-line" style={{ background: g.accent }} />
       </div>
     </button>
@@ -266,134 +337,83 @@ export const GuidelinesSection = () => {
   const wrapperRef = useRef(null);
   const rafRef     = useRef(null);
 
-  const [activeGuideline,  setActiveGuideline]  = useState(null);
-  const [activeIndex,      setActiveIndex]       = useState(0);
-  const [revealedCards,    setRevealedCards]     = useState([]);
-  const [scrollProgress,   setScrollProgress]    = useState(0);
-  const [sectionVisible,   setSectionVisible]    = useState(false);
+  const [activeGuideline, setActiveGuideline] = useState(null);
+  const [activeIndex,     setActiveIndex]     = useState(0);
+  const [revealedCards,   setRevealedCards]   = useState([]);
+  const [scrollProgress,  setScrollProgress]  = useState(0);
+  const [sectionVisible,  setSectionVisible]  = useState(false);
 
-  // Each "step" = one viewport height of scroll to advance one card
-  const STEPS      = GUIDELINES.length;           // 3
   const PIN_HEIGHT = typeof window !== 'undefined'
-    ? window.innerHeight * (STEPS + 0.5)          // +0.5 for entry buffer
-    : 3500;
+    ? window.innerHeight * (GUIDELINES.length + 0.5) : 3500;
 
   const handleScroll = useCallback(() => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
-      const wrapper = wrapperRef.current;
-      if (!wrapper) return;
-
-      const { top, height } = wrapper.getBoundingClientRect();
-      const vh = window.innerHeight;
-
-      // raw progress 0→1 over the full pin height
-      const scrollable = height - vh;
-      const raw        = Math.max(0, Math.min(1, -top / scrollable));
+      const w = wrapperRef.current;
+      if (!w) return;
+      const { top, height } = w.getBoundingClientRect();
+      const vh  = window.innerHeight;
+      const raw = Math.max(0, Math.min(1, -top / (height - vh)));
       setScrollProgress(raw);
-
-      // Which card is "active": 0, 1, 2 based on thirds of scroll
-      const idx = Math.min(GUIDELINES.length - 1, Math.floor(raw * GUIDELINES.length));
-      setActiveIndex(idx);
-
-      // Reveal cards progressively — each card appears when its step begins
-      const revealed = [];
-      GUIDELINES.forEach((_, i) => {
-        const threshold = i / GUIDELINES.length - 0.02;
-        if (raw >= threshold) revealed.push(i);
-      });
-      setRevealedCards(revealed);
-
-      setSectionVisible(raw >= 0 && -top < height);
+      setActiveIndex(Math.min(GUIDELINES.length - 1, Math.floor(raw * GUIDELINES.length)));
+      const rev = [];
+      GUIDELINES.forEach((_, i) => { if (raw >= i / GUIDELINES.length - 0.02) rev.push(i); });
+      setRevealedCards(rev);
+      setSectionVisible(-top < height && -top > -vh);
     });
   }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
+    return () => { window.removeEventListener('scroll', handleScroll); if (rafRef.current) cancelAnimationFrame(rafRef.current); };
   }, [handleScroll]);
 
-  /* Detail view */
   if (activeGuideline !== null) {
     const g = GUIDELINES[activeGuideline];
-    return g.id === 'dos-donts'
-      ? <DosDontsDetail onBack={() => setActiveGuideline(null)} />
-      : <GenericDetail guideline={g} onBack={() => setActiveGuideline(null)} />;
+    const close = () => setActiveGuideline(null);
+    if (g.id === 'visual')    return <VisualDetail   onBack={close} />;
+    if (g.id === 'copy')      return <CopyDetail     onBack={close} />;
+    if (g.id === 'dos-donts') return <DosDontsDetail onBack={close} />;
   }
 
   return (
-    <div
-      className="gl-scroll-wrapper"
-      ref={wrapperRef}
-      style={{ height: `${PIN_HEIGHT}px` }}
-    >
+    <div className="gl-scroll-wrapper" ref={wrapperRef} style={{ height: `${PIN_HEIGHT}px` }}>
       <div className="gl-sticky">
-
-        {/* ── Header ── */}
         <div className={`gl-header ${sectionVisible ? 'gl-header--visible' : ''}`}>
           <div className="gl-label">
             <span className="gl-label-num">03</span>
             <span className="gl-label-text">The Guidelines</span>
           </div>
-          <h2 className="gl-heading">
-            How we bring the <em>platform</em> to life
-          </h2>
+          <h2 className="gl-heading">How we bring the <em>platform</em> to life</h2>
         </div>
 
-        {/* ── Card stage — one card centered at 55 vw ── */}
         <div className="gl-stage">
-          {/* Ghost spacers so the active card is always centered */}
           {GUIDELINES.map((g, i) => (
-            <GuidelineCard
-              key={g.id}
-              g={g}
-              index={i}
-              activeIndex={activeIndex}
-              isRevealed={revealedCards.includes(i)}
-              onClick={() => setActiveGuideline(i)}
-            />
+            <GuidelineCard key={g.id} g={g} index={i} activeIndex={activeIndex}
+              isRevealed={revealedCards.includes(i)} onClick={() => setActiveGuideline(i)} />
           ))}
-
-          {/* Left / right vignette fades */}
-          <div className="gl-vignette gl-vignette--left"  />
+          <div className="gl-vignette gl-vignette--left" />
           <div className="gl-vignette gl-vignette--right" />
         </div>
 
-        {/* ── Dot indicator ── */}
         <div className="gl-dots">
-          {GUIDELINES.map((g, i) => (
-            <div
-              key={i}
-              className={`gl-dot ${i === activeIndex ? 'gl-dot--active' : ''} ${revealedCards.includes(i) ? 'gl-dot--revealed' : ''}`}
-              style={{ '--dot-color': g.accent }}
-            />
+          {GUIDELINES.map((_, i) => (
+            <div key={i} className={`gl-dot ${i === activeIndex ? 'gl-dot--active' : ''} ${revealedCards.includes(i) ? 'gl-dot--revealed' : ''}`} />
           ))}
         </div>
 
-        {/* ── Card counter ── */}
         <div className="gl-counter">
-          <span className="gl-counter-cur">
-            {String(activeIndex + 1).padStart(2, '0')}
-          </span>
+          <span className="gl-counter-cur">{String(activeIndex + 1).padStart(2, '0')}</span>
           <span className="gl-counter-sep">/</span>
-          <span className="gl-counter-total">
-            {String(GUIDELINES.length).padStart(2, '0')}
-          </span>
+          <span className="gl-counter-total">{String(GUIDELINES.length).padStart(2, '0')}</span>
         </div>
 
-        {/* ── Scroll hint ── */}
         <div className={`gl-scroll-hint ${scrollProgress > 0.06 ? 'gl-scroll-hint--hidden' : ''}`}>
-          <div className="gl-hint-mouse">
-            <div className="gl-hint-wheel" />
-          </div>
+          <div className="gl-hint-mouse"><div className="gl-hint-wheel" /></div>
           <span>Scroll to explore</span>
         </div>
 
-        {/* ── Progress bar ── */}
         <div className="gl-progress-bar">
           <div className="gl-progress-fill" style={{ width: `${scrollProgress * 100}%` }} />
         </div>
