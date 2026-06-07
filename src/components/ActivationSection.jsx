@@ -16,9 +16,8 @@ const ROW_LABELS = [
 
 const PALETTES = [PALETTE_A, PALETTE_B, PALETTE_C, PALETTE_D];
 
-const ImageStrip = ({ rowIndex, direction = 'left', label, images = [] }) => {
+const ImageStrip = ({ rowIndex, direction = 'left', label, images = [], onSelectImg }) => {
   const stripRef = useRef(null);
-  const [selectedImg, setSelectedImg] = useState(null);
 
   const palette = PALETTES[rowIndex % PALETTES.length];
   const tiles = [...palette, ...palette, ...palette]; // triple for seamless loop
@@ -31,9 +30,15 @@ const ImageStrip = ({ rowIndex, direction = 'left', label, images = [] }) => {
           {tiles.map((color, i) => (
             <button
               key={i}
+              type="button"
               className="strip-tile"
               style={{ background: color }}
-              onClick={() => setSelectedImg({ color, label, index: i % palette.length })}
+              onClick={() => onSelectImg({
+                color,
+                label,
+                index: i % palette.length,
+                src: images[i % images.length] || null,
+              })}
               aria-label={`Image ${(i % palette.length) + 1} from ${label}`}
             >
               {images[i % images.length] ? (
@@ -48,19 +53,6 @@ const ImageStrip = ({ rowIndex, direction = 'left', label, images = [] }) => {
           ))}
         </div>
       </div>
-
-      {/* Lightbox */}
-      {selectedImg && (
-        <div className="lightbox" onClick={() => setSelectedImg(null)}>
-          <div className="lightbox-inner" onClick={e => e.stopPropagation()}>
-            <button className="lightbox-close" onClick={() => setSelectedImg(null)}>✕</button>
-            <div className="lightbox-img" style={{ background: selectedImg.color }}>
-              <span className="lightbox-label">{selectedImg.label}</span>
-              <span className="lightbox-num">Image {selectedImg.index + 1}</span>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
@@ -68,6 +60,7 @@ const ImageStrip = ({ rowIndex, direction = 'left', label, images = [] }) => {
 export const ActivationSection = ({ images = {} }) => {
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [selectedImg, setSelectedImg] = useState(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -79,26 +72,48 @@ export const ActivationSection = ({ images = {} }) => {
   }, []);
 
   return (
-    <section className={`activation-section ${visible ? 'activation-section--visible' : ''}`} ref={sectionRef}>
-      <div className="activation-header">
-        <div className="activation-label">
-          <span className="activation-label-num">05</span>
-          <span className="activation-label-text">Activation Inspiration</span>
+    <section className="activation-section" ref={sectionRef}>
+      <div className={`activation-content ${visible ? 'activation-content--visible' : ''}`}>
+        <div className="activation-header">
+          <div className="activation-label">
+            <span className="activation-label-num">05</span>
+            <span className="activation-label-text">Activation Inspiration</span>
+          </div>
+          <h2 className="activation-heading">Activation inspiration</h2>
         </div>
-        <h2 className="activation-heading">Activation inspiration</h2>
+
+        <div className="activation-strips">
+          {ROW_LABELS.map((label, i) => (
+            <ImageStrip
+              key={i}
+              rowIndex={i}
+              direction={i % 2 === 0 ? 'left' : 'right'}
+              label={label}
+              images={images[i] || []}
+              onSelectImg={setSelectedImg}
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="activation-strips">
-        {ROW_LABELS.map((label, i) => (
-          <ImageStrip
-            key={i}
-            rowIndex={i}
-            direction={i % 2 === 0 ? 'left' : 'right'}
-            label={label}
-            images={images[i] || []}
-          />
-        ))}
-      </div>
+      {/* Lightbox - rendered outside activation-content to avoid transform constraint */}
+      {selectedImg && (
+        <div className="lightbox" onClick={() => setSelectedImg(null)}>
+          <div className="lightbox-inner" onClick={e => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={() => setSelectedImg(null)}>✕</button>
+            <div className="lightbox-img">
+              {selectedImg.src ? (
+                <img src={selectedImg.src} alt={`Selected image from ${selectedImg.label}`} />
+              ) : (
+                <>
+                  <span className="lightbox-label">{selectedImg.label}</span>
+                  <span className="lightbox-num">Image {selectedImg.index + 1}</span>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

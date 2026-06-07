@@ -2,12 +2,15 @@
   padding: 7rem 0;
   background: var(--dark);
   overflow: hidden;
+}
+
+.activation-content {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
 }
 
-.activation-section--visible {
+.activation-content--visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -216,13 +219,22 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  overflow: hidden;
+  background: var(--dark);
+}
+
+.lightbox-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .lightbox-label {
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
+  color: rgba(223, 207, 207, 0.5);
 }
 
 .lightbox-num {
