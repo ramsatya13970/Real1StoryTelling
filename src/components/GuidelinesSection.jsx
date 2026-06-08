@@ -6,10 +6,10 @@ import './GuidelinesSection.css';
    ═══════════════════════════════════════════════════════════════════ */
 
 const DOS_DONTS_PAIRS = [
-  { do: { text: 'We focus on real moments of togetherness',            gradient: 'linear-gradient(135deg,#3a2a1a 0%,#6b4423 60%,#8b5e2e 100%)' }, dont: { text: "We don't speak negatively about online shopping",  gradient: 'linear-gradient(135deg,#1a2a2a 0%,#234040 60%,#2e5555 100%)' } },
-  { do: { text: 'We show emotional, genuine and relatable moments',    gradient: 'linear-gradient(135deg,#2a1a10 0%,#7a4a20 60%,#9a6030 100%)' }, dont: { text: "We don't create staged or cliché scenes",           gradient: 'linear-gradient(135deg,#1a2210 0%,#304a18 60%,#3d6020 100%)' } },
+  { do: { text: 'We focus on real moments of togetherness', gradient: 'linear-gradient(135deg,#3a2a1a 0%,#6b4423 60%,#8b5e2e 100%)' }, dont: { text: "We don't speak negatively about online shopping",  gradient: 'linear-gradient(135deg,#1a2a2a 0%,#234040 60%,#2e5555 100%)' } },
+  { do: { text: 'We show emotional, genuine and relatable moments', gradient: 'linear-gradient(135deg,#2a1a10 0%,#7a4a20 60%,#9a6030 100%)' }, dont: { text: "We don't create staged or cliché scenes", gradient: 'linear-gradient(135deg,#1a2210 0%,#304a18 60%,#3d6020 100%)' } },
   { do: { text: 'We dramatise moments that naturally lead to product', gradient: 'linear-gradient(135deg,#2a200a 0%,#7a6010 60%,#a07c18 100%)' }, dont: { text: "We don't lead with products, offers or transactions", gradient: 'linear-gradient(135deg,#1a1a2a 0%,#202050 60%,#282870 100%)' } },
-  { do: { text: 'We are for the many',                                 gradient: 'linear-gradient(135deg,#2a1a0a 0%,#6a3c10 60%,#8a5018 100%)' }, dont: { text: 'We are not for the few',                           gradient: 'linear-gradient(135deg,#1a1a1a 0%,#303030 60%,#404040 100%)' } },
+  { do: { text: 'We are for the many', gradient: 'linear-gradient(135deg,#2a1a0a 0%,#6a3c10 60%,#8a5018 100%)' }, dont: { text: 'We are not for the few', gradient: 'linear-gradient(135deg,#1a1a1a 0%,#303030 60%,#404040 100%)' } },
 ];
 
 // Visual guideline placeholder images — warm earth/nature tones
@@ -78,8 +78,13 @@ const DarkHeader = ({ num, title, onBack }) => (
    SHARED: ANIMATED IMAGE PLACEHOLDER
    ═══════════════════════════════════════════════════════════════════ */
 const makeBackgroundStyle = (source) => {
+  console.log('makeBackgroundStyle........', source);
   if (!source) return {};
-  return source.startsWith('http')
+  
+  // Check if it's an HTTP URL or a local file path (image)
+  const isImageUrl = source.startsWith('http') || /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(source);
+  
+  return isImageUrl
     ? { backgroundImage: `url(${source})`, backgroundSize: 'cover', backgroundPosition: 'center' }
     : { background: source };
 };

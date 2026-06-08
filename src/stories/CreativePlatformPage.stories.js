@@ -1,5 +1,19 @@
 import CreativePlatformPage from '../components/CreativePlatformPage';
 import '../components/global.css';
+import DoImage1 from '../assets/images/DosAndDonts/250515 INGEA A2 EU 0197.jpg';
+import DontImage1 from '../assets/images/DosAndDonts/INGKA_ImageBank_Electronics_370.jpg';
+import DoImage2 from '../assets/images/DosAndDonts/INGKA_ImageBank_MPMoments_3506.jpg';
+import DontImage2 from '../assets/images/DosAndDonts/iStock-1371985679.jpg';
+import DoImage3 from '../assets/images/DosAndDonts/iStock-1502350201.jpg';
+import DontImage3 from '../assets/images/DosAndDonts/iStock-2177780801.jpg';
+import DoImage4 from '../assets/images/DosAndDonts/iStock-907976978.jpg';
+import DontImage4 from '../assets/images/DosAndDonts/2025-11-25-INGKA_G_0079-3.jpg';
+
+
+const imageSrcType = 'static'; // 'url' or 'static' - determines whether to use the imported static images or their HTTP URLs in the Do's & Don'ts pairs
+
+const getSrc = (staticSrc, httpSrc) =>
+  imageSrcType === 'url' ? httpSrc : staticSrc; 
 
 export default {
   title: 'IC Creative Platform/00 Full Page',
@@ -104,10 +118,73 @@ export const WithSampleMedia = {
       { src: 'https://images.unsplash.com/photo-1485217988980-11786ced9454?w=900&q=80', h: 'On the menu: quality time', r: 2, c: 1 },
     ],
     dosDontsPairs: [
-      { do: { text: 'We focus on real moments of togetherness', src: 'https://brandportal.ingkacentres.com/asset/3ed3d8aa-d044-42de-a8d5-b042ec4446a2/web_optimized_1280_landscape/Shop_Keyvisual3_rgb.jpg' }, dont: { text: "We don't speak negatively about online shopping", src: 'https://images.unsplash.com/photo-1499336315816-097655dcfbda?w=900&q=80' } },
-      { do: { text: 'We show emotional, genuine and relatable moments', src: 'https://images.unsplash.com/photo-1494526585095-c41746248156?w=900&q=80' }, dont: { text: "We don't create staged or cliché scenes", src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&q=80' } },
-      { do: { text: 'We dramatise moments that naturally lead to product', src: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=900&q=80' }, dont: { text: "We don't lead with products, offers or transactions", src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=900&q=80' } },
-      { do: { text: 'We are for the many', src: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=900&q=80' }, dont: { text: 'We are not for the few', src: 'https://images.unsplash.com/photo-1494753948330-4cb4e3e0f3c2?w=900&q=80' } },
+      {
+        do: {
+          text: 'We focus on real moments of togetherness',
+          src: getSrc(
+            DoImage1,
+            'https://brandportal.ingkacentres.com/asset/3ed3d8aa-d044-42de-a8d5-b042ec4446a2/web_optimized_1280_landscape/Shop_Keyvisual3_rgb.jpg'
+          )
+        },
+        dont: {
+          text: "We don't speak negatively about online shopping",
+          src: getSrc(
+            DontImage1,
+            'https://images.unsplash.com/photo-1499336315816-097655dcfbda?w=900&q=80'
+          )
+        }
+      },
+
+      {
+        do: {
+          text: 'We show emotional, genuine and relatable moments',
+          src: getSrc(
+            DoImage2,
+            'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80'
+          )
+        },
+        dont: {
+          text: "We don't create staged or cliché scenes",
+          src: getSrc(
+            DontImage2,
+            'https://images.unsplash.com/photo-1499336315816-097655dcfbda?w=900&q=80'
+          )
+        }
+      },
+
+      {
+        do: {
+          text: 'We dramatise moments that naturally lead to product',
+          src: getSrc(
+            DoImage3,
+            'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=900&q=80'
+          )
+        },
+        dont: {
+          text: "We don't lead with products, offers or transactions",
+          src: getSrc(
+            DontImage3,
+            'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&q=80'
+          )
+        }
+      },
+
+      {
+        do: {
+          text: 'We are for the many',
+          src: getSrc(
+            DoImage4,
+            'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&q=80'
+          )
+        },
+        dont: {
+          text: 'We are not for the few',
+          src: getSrc(
+            DontImage4,
+            'https://images.unsplash.com/photo-1485217988980-11786ced9454?w=900&q=80'
+          )
+        }
+      }
     ]
   }
 };
