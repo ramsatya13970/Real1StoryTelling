@@ -9,11 +9,43 @@ import DontImage3 from '../assets/images/DosAndDonts/iStock-2177780801.jpg';
 import DoImage4 from '../assets/images/DosAndDonts/iStock-907976978.jpg';
 import DontImage4 from '../assets/images/DosAndDonts/2025-11-25-INGKA_G_0079-3.jpg';
 
+import Still1 from '../assets/images/Stills/2025-11-25-INGKA_A_0302_v2-2.jpg';
+import Still2 from '../assets/images/Stills/2025-11-25-INGKA_B_0133-3.jpg';
+import Still3 from '../assets/images/Stills/2025-11-25-INGKA_F_0152-3.jpg';
+import Still4 from '../assets/images/Stills/2025-11-25-INGKA_G_0079-3.jpg';
+import Still5 from '../assets/images/Stills/250514 INGEA KV3 MAKEUP 0408-2.jpg';
+import Still6 from '../assets/images/Stills/250515 INGEA A2 EU 0197.jpg';
+import Still7 from '../assets/images/Stills/INGKA_ImageBank_Beauty_1471.jpg';
 
-const imageSrcType = 'static'; // 'url' or 'static' - determines whether to use the imported static images or their HTTP URLs in the Do's & Don'ts pairs
+const imageSrcType = 'url'; // 'url' or 'static' - determines whether to use the imported static images or their HTTP URLs in the guideline sections
 
 const getSrc = (staticSrc, httpSrc) =>
-  imageSrcType === 'url' ? httpSrc : staticSrc; 
+  imageSrcType === 'url' ? httpSrc : staticSrc;
+
+const STATIC_VISUAL_IMAGES = [Still1, Still2, Still3, Still4];
+const VISUAL_IMAGE_URLS = [
+  'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=900&q=80',
+  'https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=900&q=80',
+  'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80',
+  'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80',
+];
+
+const STATIC_COPY_IMAGES = [
+  Still5,
+  Still6,
+  Still7,
+  Still1,
+  Still2,
+  Still3,
+];
+const COPY_IMAGE_URLS = [
+  'https://brandportal.ingkacentres.com/asset/3ed3d8aa-d044-42de-a8d5-b042ec4446a2/web_optimized_1280_landscape/Shop_Keyvisual3_rgb.jpg',
+  'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80',
+  'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=900&q=80',
+  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&q=80',
+  'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&q=80',
+  'https://images.unsplash.com/photo-1485217988980-11786ced9454?w=900&q=80',
+];
 
 export default {
   title: 'IC Creative Platform/00 Full Page',
@@ -102,20 +134,16 @@ export const WithSampleMedia = {
         'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&q=80',
       ]
     },
-    visualImages: [
-      // 'https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=900&q=80',
-      'https://brandportal.ingkacentres.com/asset/3ed3d8aa-d044-42de-a8d5-b042ec4446a2/web_optimized_1280_landscape/Shop_Keyvisual3_rgb.jpg',
-      'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=900&q=80',
-      'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80',
-      'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80',
-    ],
+    visualImages: STATIC_VISUAL_IMAGES.map((staticSrc, index) =>
+      getSrc(staticSrc, VISUAL_IMAGE_URLS[index])
+    ),
     copyTiles: [
-      { src: 'https://brandportal.ingkacentres.com/asset/3ed3d8aa-d044-42de-a8d5-b042ec4446a2/web_optimized_1280_landscape/Shop_Keyvisual3_rgb.jpg', h: "A moment that's all about her", r: 0, c: 0 },
-      { src: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80', h: 'Moments you can’t click and collect', r: 0, c: 1 },
-      { src: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=900&q=80', h: 'Bring your best beauty advisor', r: 1, c: 0 },
-      { src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&q=80', h: 'Some moments taste better together', r: 1, c: 1 },
-      { src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&q=80', h: 'Be in the moment', r: 2, c: 0 },
-      { src: 'https://images.unsplash.com/photo-1485217988980-11786ced9454?w=900&q=80', h: 'On the menu: quality time', r: 2, c: 1 },
+      { src: getSrc(STATIC_COPY_IMAGES[0], COPY_IMAGE_URLS[0]), h: "A moment that's all about her", r: 0, c: 0 },
+      { src: getSrc(STATIC_COPY_IMAGES[1], COPY_IMAGE_URLS[1]), h: 'Moments you can’t click and collect', r: 0, c: 1 },
+      { src: getSrc(STATIC_COPY_IMAGES[2], COPY_IMAGE_URLS[2]), h: 'Bring your best beauty advisor', r: 1, c: 0 },
+      { src: getSrc(STATIC_COPY_IMAGES[3], COPY_IMAGE_URLS[3]), h: 'Some moments taste better together', r: 1, c: 1 },
+      { src: getSrc(STATIC_COPY_IMAGES[4], COPY_IMAGE_URLS[4]), h: 'Be in the moment', r: 2, c: 0 },
+      { src: getSrc(STATIC_COPY_IMAGES[5], COPY_IMAGE_URLS[5]), h: 'On the menu: quality time', r: 2, c: 1 },
     ],
     dosDontsPairs: [
       {
